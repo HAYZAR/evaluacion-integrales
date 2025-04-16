@@ -1,0 +1,173 @@
+---
+title: "Evaluación: Áreas entre curvas"
+author: "Hayzar Hernandez"
+format: html
+editor: visual
+---
+
+## Instrucciones
+
+Escribe tu nombre y responde las preguntas. Al finalizar, verás tu puntaje total.
+
+<form id="quiz-form">
+Nombre del estudiante:<br>
+<input type="text" id="nombre" required><br><br>
+
+### 1. ¿Cuál es el área entre $y = x^2$ y $y = 4x$?
+
+<input type="radio" name="q1" value="a"> $\frac{32}{3}$<br>
+<input type="radio" name="q1" value="b"> $\frac{16}{3}$<br>
+<input type="radio" name="q1" value="c"> $\frac{64}{3}$<br>
+<input type="radio" name="q1" value="d"> $\frac{128}{3}$<br><br>
+
+### 2. Calcule el área entre $y = x^2 - 2$ y $y = 2$.
+
+<input type="radio" name="q2" value="a"> $9$<br>
+<input type="radio" name="q2" value="b"> $8$<br>
+<input type="radio" name="q2" value="c"> $16$<br>
+<input type="radio" name="q2" value="d"> $12$<br><br>
+
+### 3. Determine el área entre $y = x^3$ y $y = x$.
+
+<input type="radio" name="q3" value="a"> $\frac{1}{2}$<br>
+<input type="radio" name="q3" value="b"> $\frac{1}{4}$<br>
+<input type="radio" name="q3" value="c"> $\frac{1}{3}$<br>
+<input type="radio" name="q3" value="d"> $1$<br><br>
+
+### 4. Encuentre el área entre $y = 4 - x^2$ y el eje $x$.
+
+<input type="radio" name="q4" value="a"> $\frac{32}{3}$<br>
+<input type="radio" name="q4" value="b"> $\frac{16}{3}$<br>
+<input type="radio" name="q4" value="c"> $\frac{8}{3}$<br>
+<input type="radio" name="q4" value="d"> $\frac{64}{3}$<br><br>
+
+### 5. ¿Cuál es el área limitada por $y = \sqrt{x}$ y $y = x^2$?
+
+<input type="radio" name="q5" value="a"> $\frac{1}{6}$<br>
+<input type="radio" name="q5" value="b"> $\frac{1}{3}$<br>
+<input type="radio" name="q5" value="c"> $\frac{2}{3}$<br>
+<input type="radio" name="q5" value="d"> $\frac{5}{6}$<br><br>
+
+### 6. Área entre $y = \sin(x)$ y $y = \cos(x)$ en $[0, \frac{\pi}{4}]$.
+
+<input type="radio" name="q6" value="a"> $\sqrt{2}-1$<br>
+<input type="radio" name="q6" value="b"> $1 - \frac{\sqrt{2}}{2}$<br>
+<input type="radio" name="q6" value="c"> $\frac{\sqrt{2}}{2}$<br>
+<input type="radio" name="q6" value="d"> $1$<br><br>
+
+### 7. Área entre $y = e^x$ y $y = e^{-x}$ en $[0, 1]$.
+
+<input type="radio" name="q7" value="a"> $e - e^{-1}$<br>
+<input type="radio" name="q7" value="b"> $e + e^{-1}$<br>
+<input type="radio" name="q7" value="c"> $\frac{e - 1}{e}$<br>
+<input type="radio" name="q7" value="d"> $\frac{e + 1}{e}$<br><br>
+
+### 8. Determine el área entre las curvas $y = 2x$ y $y = x^2$.
+
+<input type="radio" name="q8" value="a"> $\frac{4}{3}$<br>
+<input type="radio" name="q8" value="b"> $\frac{8}{3}$<br>
+<input type="radio" name="q8" value="c"> $\frac{16}{3}$<br>
+<input type="radio" name="q8" value="d"> $\frac{32}{3}$<br><br>
+
+### 9. Área limitada por $y = \ln(x)$ y el eje $x$ entre $x = 1$ y $x = e$.
+
+<input type="radio" name="q9" value="a"> $2$<br>
+<input type="radio" name="q9" value="b"> $1$<br>
+<input type="radio" name="q9" value="c"> $e - 1$<br>
+<input type="radio" name="q9" value="d"> $e + 1$<br><br>
+
+### 10. Calcule el área entre $y = x^3$ y el eje $x$ en $[-1, 1]$.
+
+<input type="radio" name="q10" value="a"> $0$<br>
+<input type="radio" name="q10" value="b"> $1$<br>
+<input type="radio" name="q10" value="c"> $\frac{1}{2}$<br>
+<input type="radio" name="q10" value="d"> $\frac{1}{4}$<br><br>
+
+<button type="button" onclick="evaluar()">Enviar evaluación</button>
+</form>
+
+<div id="resultado" style="margin-top: 1em; font-weight: bold;"></div>
+
+<script>
+function evaluar() {
+  const nombre = document.getElementById('nombre').value;
+  const respuestas = {
+    q1: "a",
+    q2: "b",
+    q3: "c",
+    q4: "b",
+    q5: "c",
+    q6: "a",
+    q7: "a",
+    q8: "a",
+    q9: "c",
+    q10: "a"
+  };
+
+  let puntaje = 0;
+  let total = Object.keys(respuestas).length;
+
+  for (let q in respuestas) {
+    const seleccion = document.querySelector(`input[name=${q}]:checked`);
+    if (seleccion && seleccion.value === respuestas[q]) {
+      puntaje++;
+    }
+  }
+
+  document.getElementById("resultado").innerHTML = `Tu puntaje es: ${puntaje}/${total}`;
+}
+</script>
+
+<script>
+function evaluar() {
+  const nombre = document.getElementById('nombre').value;
+
+  // Captura respuestas
+  const r = {};
+  for (let i = 1; i <= 10; i++) {
+    const seleccion = document.querySelector(`input[name=q${i}]:checked`);
+    r[`r${i}`] = seleccion ? seleccion.value : "";
+  }
+
+  // Respuestas correctas
+  const correctas = {
+    q1: "a", q2: "b", q3: "c", q4: "b", q5: "c",
+    q6: "a", q7: "a", q8: "a", q9: "c", q10: "a"
+  };
+
+  // Cálculo del puntaje
+  let puntaje = 0;
+  for (let i = 1; i <= 10; i++) {
+    const qi = `q${i}`;
+    if (r[`r${i}`] === correctas[qi]) puntaje++;
+  }
+
+  // Mostrar el resultado
+  document.getElementById("resultado").innerHTML = `Tu puntaje es: ${puntaje}/10`;
+
+  // Enviar al formulario
+  const formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfRa7gQrB0W_PZrvLkzJvCvbE1nZ-2FoKh5KnrUkJvUEIbl3A/formResponse"; // <-- reemplaza con TU URL FORMULARIO
+
+  const bodyData =
+    `entry.1674726701=${encodeURIComponent(nombre)}` +
+    `&entry.42453066=${r.r1}` +
+    `&entry.510675388=${r.r2}` +
+    `&entry.567943525=${r.r3}` +
+    `&entry.709699612=${r.r4}` +
+    `&entry.2102242108=${r.r5}` +
+    `&entry.195487000=${r.r6}` +
+    `&entry.732039059=${r.r7}` +
+    `&entry.1510402295=${r.r8}` +
+    `&entry.1369943476=${r.r9}` +
+    `&entry.1719661883=${r.r10}` +
+    `&entry.1673418396=${puntaje}`;
+
+  fetch(formURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: bodyData
+  });
+}
+</script>
+
